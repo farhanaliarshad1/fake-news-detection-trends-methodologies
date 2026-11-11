@@ -21,41 +21,47 @@ Advanced Topics in Computational Text and Media Science (NLP Seminar) · Univers
 
 ## Overview
 
-False information spreads faster than it can be checked, and it harms both social trust and cybersecurity. This
-paper reviews how fake news detection has developed, from manual fact-checking to transformer models and
-LLM agents that consult external knowledge. It also examines how cyber threats such as phishing, botnets and
-deepfakes are used to spread misinformation.
+The widespread dissemination of false news presents substantial difficulties to both social trust and
+cybersecurity (Abstract). This paper analyses current trends and methods in fake news identification, with an
+emphasis on automated systems that use machine learning and NLP. It investigates transformer-based models,
+domain-specific frameworks such as FaKnow, and LLM agents that combine external knowledge sources to improve
+detection accuracy. It also examines the limitations of manual fact-checking and the role of cyber threats such
+as phishing, botnets and deepfakes (Sections 2 to 5).
 
-Building on the review, the paper proposes a **propaganda-aware detection methodology**: a model trained on data
-enriched with propaganda techniques, supported by dedicated sub-models for emotional language and logical
-fallacies.
+Building on the review, the paper presents a methodology for a fake news detection model that **recognises
+propaganda strategies**, trained on a dataset enriched with AI-generated propaganda and supported by sub-models
+for emotion detection, fallacy recognition and translation bias identification (Section 6).
 
-> **Main finding:** combining machine learning, NLP and network analysis is the most promising way to fight the
-> spread of misinformation.
+> **Finding (Abstract, Conclusion):** combining machine learning, NLP and network analysis is a promising
+> approach to fighting the spread of misinformation.
 
 ## What the paper covers
 
 ![Landscape](assets/landscape.png)
 
-| Section | Content |
+| Paper section | Content |
 |---|---|
-| **Literature review** | Transformer-based detection with content and social context, the FaKnow library, the Teller framework, an LLM agent for fake news detection, classical ML comparisons, dual-evidence graph models and sentiment-aware detection |
-| **Detection approaches** | Manual fact-checking (expert websites, crowdsourcing) versus automatic content-based detection |
-| **Security threats** | Phishing, social engineering, botnets, malware, DDoS attacks and deepfakes as channels for misinformation |
-| **Current trends** | Machine learning classifiers, NLP methods (sentiment, topic modelling, BERT, GPT), network traffic analysis and automated fact-checking |
-| **Proposed method** | An end-to-end, propaganda-aware pipeline from problem definition to model refinement |
+| **2. Literature review** | Transformer-based detection with content and social context, the Teller framework, the FaKnow library, an LLM agent for fake news detection, a comparison of classical ML models, a dual evidence perception model and sentiment-based detection |
+| **3. Approaches** | Manual fact-checking (fact-checking websites, crowdsourcing) versus automatic content-based detection using lexical and semantic features |
+| **4. Security threats** | Phishing, social engineering, botnets, malware, DDoS attacks and deepfakes as ways misleading information is spread |
+| **5. Current trends** | Machine learning (SVM, Decision Trees, Random Forests), NLP (sentiment analysis, topic modelling, semantic analysis, BERT, GPT), network traffic analysis and automated fact-checking systems |
+| **6. Proposed method** | A six-stage pipeline from problem definition to model refinement (Figure 1) |
 
 ## Related work at a glance
 
-| Work | Approach | Key features | Data | Finding |
+Reproduced from Table I of the paper; reference numbers follow the paper's bibliography.
+
+| Work | Approach | Key features | Dataset | Findings |
 |---|---|---|---|---|
-| Raza & Ding (2022) | Transformer-based detection | Content and social context analysis | Online news datasets | Automated methods scale where manual fact-checking cannot |
-| **FaKnow** (Zhu et al., 2024) | Unified library | Many models and datasets on a PyTorch backend | Fake news benchmarks | Makes research faster and reproducible |
-| **Teller** (Liu et al., 2024) | Explainable, generalisable detection | Logic templates combined with LLMs | News datasets | Transparent, interpretable verdicts |
-| Prabha et al. (2024) | Classical ML comparison | Logistic Regression, Random Forest, Decision Tree | Benchmark datasets | Decision Tree most accurate; data quality is decisive |
-| Dual evidence perception | Graph neural networks + semantics | Structural and semantic evidence | News and social media data | Fixes methods that ignore semantic content |
-| Sentiment-based detection | Sentiment analysis | Emotional tone of content | ISOT, LIAR | Sentiment features raise accuracy |
-| **LLM agent** (Li et al., 2024) | LLM agent | Expert workflow, domain knowledge, web search | Snopes, PolitiFact, GossipCop | External search improves detection |
+| Transformer-based approach [14] | Transformer-based automated detection | Integrates social context and content analysis | Various online news datasets | Draws attention to the shortcomings of manual fact-checking and encourages the scalability of automated techniques |
+| FaKnow [15] | Unified library structure | Several models, datasets and a PyTorch backend | Various fake news datasets | Increases the efficiency and repeatability of fake news research |
+| Teller framework [9] | Explainable and generalisable detection | Logic templates and LLM integration | Various news datasets | Delivers clear and understandable detection results |
+| Comparative analysis (AIP) [13] | Machine learning models | Logistic regression, random forests, decision trees | Various benchmark datasets | Decision Tree classifier is the most accurate; highlights the importance of high-quality datasets |
+| Dual evidence perception model [14] | Graph neural networks and semantic analysis | Combines evidence from structure and semantics | News datasets, social media data | Addresses approaches that ignore semantic content |
+| Sentiment analysis-based detection [14] | Integration of sentiment analysis | Content-based identification and analysis of emotional tone | ISOT, LIAR | Sentiment analysis increases detection accuracy |
+| Content and social context-based detection [14] | Content and social context features | Social interaction and style features | Various news datasets | Highlights issues with flexibility and the need for reliable models |
+| Fact-checking and algorithm strategies [8] | Integration of fact-checking | Algorithmic strategies combined with fact-checking tasks | Various fact-checking datasets | Shows how advanced algorithms are integrated with fact-checking |
+| LLM agent [8] | Large language model agent | Structured expert workflow and domain knowledge | Snopes, PolitiFact, GossipCop | Increases detection accuracy through external search engines and subject expertise |
 
 ## Proposed methodology
 
@@ -72,13 +78,13 @@ The pipeline follows Figure 1 and Section 6 of the paper.
 | **5. Implementation and Testing** | Pilot testing and user feedback |
 | **6. Model Refinement** | Final stage, informed by pilot testing and user feedback |
 
-**Feature groups**
+**Feature types (Table II of the paper)**
 
-| Textual | Metadata | Social context | Graph-based |
+| Textual features | Metadata features | Social context features | Graph-based features |
 |---|---|---|---|
 | TF-IDF | Source reliability | User engagement metrics | Propagation graphs |
-| N-grams | Publishing date and time | User profile information | Network structure |
-| Sentiment | Author reputation | | Centrality measures |
+| N-grams | Publishing date and time | Network structure | Centrality measures |
+| Sentiment analysis | Author reputation | User profile information | |
 
 <details>
 <summary><b>Original methodology figure from the paper</b></summary>
@@ -88,16 +94,18 @@ The pipeline follows Figure 1 and Section 6 of the paper.
 
 ## Key takeaways
 
-1. **Manual fact-checking does not scale.** It is accurate but slow, costly and open to bias; crowdsourcing adds
-   inconsistency.
-2. **Transformers and LLMs lead current research.** Models such as BERT and GPT capture subtle linguistic cues,
-   and LLM agents improve accuracy by consulting external search engines.
-3. **Explainability is becoming a requirement.** Frameworks like Teller show why a claim is judged false, which
-   builds trust in automated systems.
-4. **Misinformation is also a security problem.** Botnets, phishing, malware and deepfakes are delivery channels,
-   so network and propagation analysis complements text analysis.
-5. **Propaganda techniques are a missing signal.** Modelling emotional manipulation and logical fallacies
-   explicitly is a promising direction for more robust detectors.
+1. **Manual fact-checking is accurate but does not scale** (Section 3.1). It is time-consuming and not scalable to
+   the volume of online content; crowdsourcing is prone to biases and differing levels of competence.
+2. **Transformer models and LLM agents advance detection** (Sections 2 and 5.2). BERT and GPT have shown
+   substantial success in interpreting language and identifying subtle signs of false news; an LLM agent improves
+   accuracy by using external search engines and domain knowledge.
+3. **Explainability builds trust** (Section 2). The Teller framework decomposes fact-checking with logic templates
+   and LLMs to produce transparent, interpretable results.
+4. **Misinformation is also a cybersecurity problem** (Sections 4 and 5.3). Phishing, social engineering, botnets,
+   malware, DDoS attacks and deepfakes help spread false information, and network analysis of propagation
+   patterns can reveal coordinated misinformation efforts.
+5. **Propaganda-aware detection is the proposed next step** (Abstract, Section 6). A model that recognises
+   propaganda strategies lays the groundwork for future developments in this field.
 
 ## Related project
 
