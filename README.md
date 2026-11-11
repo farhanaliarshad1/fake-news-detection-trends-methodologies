@@ -61,16 +61,16 @@ fallacies.
 
 ![Proposed methodology](assets/proposed_methodology.png)
 
-| Stage | Details |
+The pipeline follows Figure 1 and Section 6 of the paper.
+
+| Stage | Details from the paper |
 |---|---|
-| **1. Problem definition** | Detect fake news with a model trained on a dataset enriched with propaganda |
-| **2. Data collection** | Balanced verified real and confirmed fake news; propaganda-annotated or synthetic data that mimics real propaganda |
-| **3. Preprocessing and features** | Noise removal, then four feature groups (below) |
-| **4. Model selection** | Baselines (Logistic Regression, SVM, Decision Trees) and advanced models (LSTM, BERT, Transformers) fine-tuned on the propaganda-loaded data |
-| **5. Propaganda sub-models** | Emotion detection for emotionally loaded words, fallacy recognition for typical logical fallacies, translation-bias identification |
-| **6. Training and validation** | Supervised learning with propaganda labels as input features; paraphrasing and back-translation augmentation; k-fold cross-validation |
-| **7. Testing** | Pilot testing and user feedback; accuracy, precision, recall, F1 and AUC-ROC, with emphasis on detecting propaganda |
-| **8. Refinement** | Iterate on errors and feedback |
+| **1. Problem Definition** | Develop a model that detects fake news by training it on a dataset enriched with AI-generated propaganda |
+| **2. Data Collection and Preparation** | *Dataset creation:* a balanced mix of verified real and confirmed fake news from real and fake news sources, propaganda annotation, and synthetic data that mimics the style and substance of real propaganda. *Data preprocessing:* text cleaning to reduce noise, and feature engineering (feature groups below) |
+| **3. Model Selection** | *Model types:* baseline models (Logistic Regression, SVM, Decision Trees) and advanced models (LSTM, BERT, Transformer-based models fine-tuned on the propaganda-loaded dataset). *Propaganda detection sub-models:* emotion detection for emotionally laden words, fallacy recognition for typical logical fallacies, and translation bias identification |
+| **4. Training and Validation** | *Training:* supervised learning on the labelled dataset with propaganda labels as input features; data augmentation through paraphrasing or back-translation. *Validation:* k-fold cross-validation for reliability and against overfitting; evaluation with accuracy, precision, recall, F1-score and AUC-ROC, with special emphasis on detecting propaganda |
+| **5. Implementation and Testing** | Pilot testing and user feedback |
+| **6. Model Refinement** | Final stage, informed by pilot testing and user feedback |
 
 **Feature groups**
 
@@ -101,9 +101,9 @@ fallacies.
 
 ## Related project
 
-The ideas in this paper were later put into practice in
-[German Harmful Content Detection](https://github.com/farhanaliarshad1/german-harmful-content-detection), which
-compares transformers, a multi-task model and LLM prompting for German fake news, hate speech and toxicity.
+[German Harmful Content Detection](https://github.com/farhanaliarshad1/german-harmful-content-detection) is a
+later, hands-on project that compares transformers, a multi-task model and LLM prompting for German fake news,
+hate speech and toxicity.
 
 ## Citation
 
